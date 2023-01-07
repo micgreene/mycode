@@ -36,3 +36,48 @@
 - using the Python Shebang
 - importing/exporting modules `if __name__ == "__main__":`
 - reading/writing to files
+
+## Table of Contents
+## A brief explanation of what each folder contains in this repository: 
+-  5g_research
+    - copying local files with python
+- 5g_research_backup
+    - copying local files with python
+- ChallengeLabs
+    - Unique challenges to push my knowledge.
+- advlist
+ - About complex lists
+- attemptlogin
+    - Learning to parse log files
+- ceph_storage
+    - Playing with python pip packages
+- cfgread
+    - reading in data
+- credmaker
+    - Outputting files
+- err
+    - A bit on error handling
+- fact
+    - Looping technique
+- find
+    - practice using the `find` and `less` commands in the linux terminal
+- if_name
+    - Playing with python pip packages
+- iftest
+    - Learning about conditional if
+- iftest2
+    - working on if, elif, else logic
+- introfor
+    - studying for logic
+- lab_input
+    - learning about the Python input() function for gathering user data
+- listmethods
+    - practice with Python list methods
+- mix-list
+    - mixed lists
+- moving-files
+    - practice moving files files in the directory using Python libraries
+- shutil
+    - practice with shell utility lirary
+- strings
+    - join and split 
