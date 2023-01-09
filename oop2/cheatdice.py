@@ -32,3 +32,16 @@ class Cheat_Loaded_Dice(Player): # inheritance of Player
             if self.dice[i] < 6:
                 self.dice[i] += 1
             i += 1
+
+# allows user to sabotage other users by forcing them to reroll their 6's
+class Cheat_Force_Reroll(Player):
+    def cheat(self, other):
+        if 6 in other.dice:
+            other.dice.remove(6)
+        while len(other.dice) < 3:
+            other.dice.append(randint(1,5))
+
+#        for roll in other.dice:
+#            if roll == 6:
+#                other.dice.remove(roll)
+#                other.dice.append(randint(1,5))
