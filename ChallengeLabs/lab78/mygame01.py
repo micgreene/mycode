@@ -4,6 +4,7 @@
 
 import crayons
 import json
+import os
 import time
 
 def showInstructions():
@@ -15,53 +16,40 @@ def showInstructions():
     Commands:
       go [direction]
       get [item]
+
+      To Win:
+        find the <key> and the <potion>
+        escape through the <Garden>
+
+      To Lose:
+        find the <Monster>
     ''')
+    time.sleep(2)
+    input(crayons.blue("Press ENTER to continue"))
+    print(crayons.red("\nEntering the Dungeon..."))
+    time.sleep(2)
 
 def showStatus():
+    os.system('clear')
     """determine the current status of the player"""
     # print the player's current location
-    print('---------------------------')
-    print('You are in the ' + currentRoom)
-    # print what the player is carrying
-    print('Inventory:', inventory)
+    print(crayons.yellow('---------------------------', bold=True))
+    print('You are in the ' + currentRoom + '\n')
     # check if there's an item in the room, if so print it
     if "item" in rooms[currentRoom]:
-      print('You see a ' + rooms[currentRoom]['item'])
-    print("---------------------------")
+      print(crayons.green('- You see a ' + rooms[currentRoom]['item']))
+    # print what the player is carrying
+    print(crayons.blue(f'\n\nInventory: {", ".join(inventory)}'))
+    print(crayons.yellow("---------------------------", bold=True))
 
 
 # an inventory, which is initially empty
 inventory = []
 
+# loads a dictionary which acts as a map
 with open("dungeon_map.json", "r") as map_file:
     rooms = json.load(map_file)
 
-
-# a dictionary linking a room to other rooms
-"""
-rooms = {
-
-            'Hall' : {
-                  'south' : 'Kitchen',
-                  'east'  : 'Dining Room',
-                  'item'  : 'key'
-                },
-
-            'Kitchen' : {
-                  'north' : 'Hall',
-                  'item'  : 'monster',
-                },
-            'Dining Room' : {
-                'west' : 'Hall',
-                'south': 'Garden',
-                'item' : 'potion'
-                },
-            'Garden' : {
-                'north' : 'Dining Room'
-                }
-            
-        }
-"""
 
 # start the player in the Hall
 currentRoom = 'Hall'
@@ -91,7 +79,8 @@ while True:
             currentRoom = rooms[currentRoom][move[1]]
         # if they aren't allowed to go that way:
         else:
-            print('You can\'t go that way!')
+            print(crayons.red('You can\'t go that way!', bold=True))
+            time.sleep(1)
 
     #if they type 'get' first
     if move[0] == 'get' :
@@ -102,7 +91,8 @@ while True:
             #add the item to their inventory
             inventory.append(move[1])
             #display a helpful message
-            print(move[1] + ' got!')
+            print(f'\nYou got the {crayons.magenta(move[1])}!\n\n')
+            input(crayons.blue("Press ENTER to continue"))
             #delete the item key:value pair from the room's dictionary
             del rooms[currentRoom]['item']
         # if there's no item in the room or the item doesn't match
