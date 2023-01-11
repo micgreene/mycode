@@ -62,7 +62,7 @@ def main():
     df = pandas.DataFrame(pokemon) # create dataframe from response
 
     df.to_excel(r'export_dataframe.xlsx', index=False) # exports dataframe to excel file
-    df.to_json(r'export_dataframe.json', index=False) # exports dataframe to json file
+    df.to_json(r'export_dataframe.json') # exports dataframe to json file
 
     print("Gotta catch 'em all!")
 if __name__ == "__main__":
